@@ -34,14 +34,11 @@ def str_to_int(val):
     return val if val.isdigit() else str_to_int_dict[val]
 
 def get_two_digit_number_str(string):
-    print(string)
     # the positive lookahead (?=...) checks for a match, but doesn’t consume any of the string. This means that after the lookahead has been evaluated, the regex engine hasn't moved on the string being parsed.
     # If we don't put it, ant two numbers share letters (e.g. twone), it will only capture the two, and not two and one 
     regex = r'(?=(\d|one|two|three|four|five|six|seven|eight|nine|zero))'
     digits_list = re.findall(regex,string)
-    print(digits_list)
     number = int(str_to_int(digits_list[0])) * 10 + int(str_to_int(digits_list[-1]))
-    print(number)
     return(number)   
 
 def get_number_per_line2(file_name):
